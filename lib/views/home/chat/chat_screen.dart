@@ -1,9 +1,6 @@
-import 'package:discord_clone/model/friends_model.dart';
-import 'package:discord_clone/utilities/data/friends_data_set.dart';
-import 'package:discord_clone/views/auth/components/auth_exports.dart';
 import 'package:flutter/material.dart';
-import 'bottom_nav_bar.dart';
-import 'components/home_exports.dart';
+import '../bottom_nav_bar.dart';
+import '../home_exports.dart';
 
 class MainScreen extends StatelessWidget {
   static String routeName = '/main';
@@ -30,7 +27,6 @@ class MainScreen extends StatelessWidget {
           if (MediaQuery.of(context).viewInsets.bottom != 0.0) {
             FocusManager.instance.primaryFocus!.unfocus();
           }
-
           Future.delayed(const Duration(milliseconds: 100), () => isVisible.value = isOpened);
         },
         appBar: customAppBar(

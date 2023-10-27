@@ -1,9 +1,5 @@
-import 'package:discord_clone/utilities/extensions/size_extension.dart';
-import 'package:discord_clone/views/home/components/home_exports.dart';
+import 'package:discord_clone/views/home/home_exports.dart';
 import 'package:flutter/material.dart';
-
-import '../../../utilities/constants/colors.dart';
-import '../../../utilities/constants/sizes.dart';
 
 class BottomChatBar extends StatelessWidget {
   const BottomChatBar({
@@ -17,8 +13,7 @@ class BottomChatBar extends StatelessWidget {
       width: context.getWidthSize(),
       height: 60,
       decoration: const BoxDecoration(
-          color: scaffoldBackgroundColor,
-          border: Border(top: BorderSide(color: Colors.black))),
+          color: scaffoldBackgroundColor, border: Border(top: BorderSide(color: Colors.black))),
       child: const Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

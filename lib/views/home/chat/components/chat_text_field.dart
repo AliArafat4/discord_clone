@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 
-import '../../../utilities/constants/colors.dart';
-import '../../../utilities/constants/sizes.dart';
+import '../../../../utilities/constants/colors.dart';
+import '../../../../utilities/constants/sizes.dart';
 
 class ChatTextField extends StatelessWidget {
   const ChatTextField({
@@ -31,9 +30,7 @@ class ChatTextField extends StatelessWidget {
             filled: true,
             hintText: "Message @Name",
             hintStyle: const TextStyle(
-                color: greyTextColor,
-                fontSize: fontSize18,
-                fontWeight: FontWeight.w400),
+                color: greyTextColor, fontSize: fontSize18, fontWeight: FontWeight.w400),
             fillColor: darkTextColor,
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(40),
@@ -42,4 +39,3 @@ class ChatTextField extends StatelessWidget {
     );
   }
 }
-

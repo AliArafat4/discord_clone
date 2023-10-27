@@ -1,10 +1,6 @@
-import 'package:discord_clone/views/home/bottom_nav_bar.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'auth_exports.dart';
-import 'selected_register_method.dart';
-import 'package:discord_clone/utilities/extensions/size_extension.dart';
-import 'package:flutter/cupertino.dart';
 
 class SlidingSelector extends StatefulWidget {
   const SlidingSelector({

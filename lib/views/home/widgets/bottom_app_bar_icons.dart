@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'home_exports.dart';
+import '../home_exports.dart';
 
 class BottomAppBarIcons extends StatelessWidget {
   const BottomAppBarIcons({

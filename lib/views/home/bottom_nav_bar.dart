@@ -1,15 +1,10 @@
-import 'package:discord_clone/views/home/profile_screen.dart';
+import 'package:discord_clone/views/home/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../../model/friends_model.dart';
-import '../../utilities/data/friends_data_set.dart';
-import '../../utilities/data/global_data.dart';
-import '../auth/components/auth_exports.dart';
-import 'components/home_exports.dart';
-import 'explore_screen.dart';
-import 'friends_screen.dart';
-import 'main_screen.dart';
-import 'notifications_screen.dart';
+
+import 'home_exports.dart';
+import 'explore/explore_screen.dart';
+import 'chat/chat_screen.dart';
+import 'notifications/notifications_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   static String routeName = '/navBar';
@@ -43,7 +38,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
     for (var item in friendsDataSet) {
       listOfFriends.add(Friends.fromJson(item));
     }
-
     super.initState();
   }
 
@@ -52,6 +46,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: scaffoldBackgroundColor,
+      body: screensList[selectedIndex],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: ValueListenableBuilder<bool>(
         valueListenable: isVisible,
@@ -75,7 +70,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
                           } else {
                             selectedIndex = index;
                           }
-
                           setState(() {});
                         },
                       ),
@@ -83,12 +77,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   ),
                   Expanded(
                     child: UserAvatar(
-                      imagePath: "assets/images/Profile_Picture_Kafka.png",
+                      imagePath: currentUser["avatar"],
                       onPressedFunc: () {
-                        selectedIndex = 4;
+                        selectedIndex = iconsList.length;
                         setState(() {});
                       },
-                      userStatus: 'idle',
+                      userStatus: currentUser["status"],
                     ),
                   ),
                 ],
@@ -97,7 +91,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
         ),
       ),
-      body: screensList[selectedIndex],
     );
   }
 }

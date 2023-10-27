@@ -1,8 +1,6 @@
-import 'package:discord_clone/utilities/constants/colors.dart';
-import 'package:discord_clone/views/auth/components/auth_exports.dart';
 import 'package:flutter/material.dart';
 
-import '../../../utilities/data/global_data.dart';
+import '../home_exports.dart';
 
 class UserAvatar extends StatelessWidget {
   const UserAvatar({
@@ -39,8 +37,7 @@ class UserAvatar extends StatelessWidget {
                   radius: 8,
                   backgroundColor: scaffoldBackgroundColor,
                   child: CircleAvatar(
-                    backgroundColor:
-                        statusColor.map((e) => e[userStatus]).first,
+                    backgroundColor: statusColor.map((e) => e[userStatus]).first,
                     radius: 5,
                   ),
                 ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/colors.dart';
+import 'package:discord_clone/utilities/utilities_exports.dart';
 
 List<Map> profileSettings = [
   {
@@ -28,13 +28,6 @@ List<Map> profileSettings = [
     "leading": const Icon(Icons.edit, color: greyTextColor),
     "title": const Text(
       "Profiles",
-      style: TextStyle(color: Colors.white),
-    ),
-  },
-  {
-    "leading": const Icon(Icons.person, color: greyTextColor),
-    "title": const Text(
-      "Set Status",
       style: TextStyle(color: Colors.white),
     ),
   },

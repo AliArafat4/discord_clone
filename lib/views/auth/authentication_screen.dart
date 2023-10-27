@@ -17,7 +17,6 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDisabled = true;
     return Scaffold(
       backgroundColor: scaffoldBackgroundColor,
       appBar: AppBar(
