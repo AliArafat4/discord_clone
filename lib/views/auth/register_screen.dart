@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'components/auth_exports.dart';
+import 'components/selected_register_method.dart';
 
 class RegisterScreen extends StatelessWidget {
   static String routeName = '/register';
@@ -27,7 +28,22 @@ class RegisterScreen extends StatelessWidget {
               ),
             ),
             height20,
-            const SlidingSelector(),
+            const SlidingSelector(
+              firstSliderTitle: "Phone",
+              firstSide: SelectedRegisterMethod(
+                content: 'Phone Number',
+                isPhone: true,
+                authTextField:
+                    AuthTextField(isPassword: false, content: "Phone"),
+              ),
+              secondSliderTitle: "Email",
+              secondSide: SelectedRegisterMethod(
+                isPhone: false,
+                content: "Email",
+                authTextField:
+                    AuthTextField(isPassword: false, content: "Email"),
+              ),
+            ),
             height10,
             const Align(
               alignment: Alignment.centerLeft,

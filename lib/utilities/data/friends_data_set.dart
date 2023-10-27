@@ -35,4 +35,22 @@ List<Map> friendsDataSet = [
     "status": "online",
     "activity": "Playing Visual Studio Code",
   },
+  {
+    "name": "εოἶ",
+    "avatar": "assets/images/anya.png",
+    "status": "invisible",
+    "activity": "Playing Sleeping",
+  },
+  {
+    "name": "εოἶ",
+    "avatar": "assets/images/anya.png",
+    "status": "invisible",
+    "activity": "Playing Sleeping",
+  },
+  {
+    "name": "εოἶ",
+    "avatar": "assets/images/anya.png",
+    "status": "invisible",
+    "activity": "Playing Sleeping",
+  },
 ];

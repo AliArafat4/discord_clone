@@ -9,18 +9,20 @@ class UserAvatar extends StatelessWidget {
     super.key,
     this.onPressedFunc,
     required this.imagePath,
-    required this.userStatus,
+    this.userStatus,
+    this.size,
   });
   final Function()? onPressedFunc;
   final String imagePath;
-  final String userStatus;
+  final String? userStatus;
+  final double? size;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       height: 100,
       onPressed: onPressedFunc,
       child: SizedBox(
-        width: 40,
+        width: size ?? 40,
         child: Stack(
           children: [
             CircleAvatar(
@@ -28,15 +30,19 @@ class UserAvatar extends StatelessWidget {
               foregroundImage: AssetImage(imagePath),
               radius: 25,
             ),
-            Positioned(
-              right: -3,
-              bottom: 1,
-              child: CircleAvatar(
-                radius: 8,
-                backgroundColor: scaffoldBackgroundColor,
+            Visibility(
+              visible: (userStatus != null) ? true : false,
+              child: Positioned(
+                right: -3,
+                bottom: 1,
                 child: CircleAvatar(
-                  backgroundColor: statusColor.map((e) => e[userStatus]).first,
-                  radius: 5,
+                  radius: 8,
+                  backgroundColor: scaffoldBackgroundColor,
+                  child: CircleAvatar(
+                    backgroundColor:
+                        statusColor.map((e) => e[userStatus]).first,
+                    radius: 5,
+                  ),
                 ),
               ),
             )

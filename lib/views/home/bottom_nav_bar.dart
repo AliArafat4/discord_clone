@@ -22,7 +22,7 @@ class BottomNavBar extends StatefulWidget {
 List<Widget> screensList = [
   MainScreen(),
   const FriendsScreen(),
-  const ExploreScreen(),
+  const SizedBox(),
   const NotificationsScreen(),
   const ProfileScreen(),
 ];
@@ -64,16 +64,23 @@ class _BottomNavBarState extends State<BottomNavBar> {
               child: Row(
                 children: [
                   ...List.generate(
-                      iconsList.length,
-                      (index) => Expanded(
-                              child: BottomAppBarIcons(
-                            isSelected: (selectedIndex == index),
-                            icon: iconsList[index],
-                            func: () {
-                              selectedIndex = index;
-                              setState(() {});
-                            },
-                          ))),
+                    iconsList.length,
+                    (index) => Expanded(
+                      child: BottomAppBarIcons(
+                        isSelected: (selectedIndex == index),
+                        icon: iconsList[index],
+                        func: () {
+                          if (index == 2) {
+                            exploreBottomSheet(context);
+                          } else {
+                            selectedIndex = index;
+                          }
+
+                          setState(() {});
+                        },
+                      ),
+                    ),
+                  ),
                   Expanded(
                     child: UserAvatar(
                       imagePath: "assets/images/Profile_Picture_Kafka.png",

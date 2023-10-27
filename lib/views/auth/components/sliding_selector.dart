@@ -1,13 +1,24 @@
+import 'package:discord_clone/views/home/bottom_nav_bar.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'auth_exports.dart';
 import 'selected_register_method.dart';
+import 'package:discord_clone/utilities/extensions/size_extension.dart';
+import 'package:flutter/cupertino.dart';
 
 class SlidingSelector extends StatefulWidget {
   const SlidingSelector({
     super.key,
+    required this.firstSide,
+    required this.secondSide,
+    required this.firstSliderTitle,
+    required this.secondSliderTitle,
   });
 
+  final Widget firstSide;
+  final Widget secondSide;
+  final String firstSliderTitle;
+  final String secondSliderTitle;
   @override
   State<SlidingSelector> createState() => _SlidingSelectorState();
 }
@@ -15,6 +26,12 @@ class SlidingSelector extends StatefulWidget {
 class _SlidingSelectorState extends State<SlidingSelector> {
   int? groupValue = 0;
   List<Widget> selection = [];
+  @override
+  void initState() {
+    selection = [widget.firstSide, widget.secondSide];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,36 +47,24 @@ class _SlidingSelectorState extends State<SlidingSelector> {
             children: {
               0: SizedBox(
                 width: context.getWidthSize() * .4,
-                child: const Center(
+                child: Center(
                   child: Text(
-                    "Phone",
-                    style: TextStyle(color: whiteTextColor),
+                    widget.firstSliderTitle,
+                    style: const TextStyle(color: whiteTextColor),
                   ),
                 ),
               ),
               1: SizedBox(
                 width: context.getWidthSize() * .4,
-                child: const Center(
+                child: Center(
                   child: Text(
-                    "Email",
-                    style: TextStyle(color: whiteTextColor),
+                    widget.secondSliderTitle,
+                    style: const TextStyle(color: whiteTextColor),
                   ),
                 ),
               )
             }),
-        (groupValue == 0)
-            ? const SelectedRegisterMethod(
-                content: 'Phone Number',
-                isPhone: true,
-                authTextField:
-                    AuthTextField(isPassword: false, content: "Phone"),
-              )
-            : const SelectedRegisterMethod(
-                isPhone: false,
-                content: "Email",
-                authTextField:
-                    AuthTextField(isPassword: false, content: "Email"),
-              ),
+        selection[groupValue!],
       ],
     );
   }
