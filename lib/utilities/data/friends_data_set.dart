@@ -41,16 +41,4 @@ List<Map> friendsDataSet = [
     "status": "invisible",
     "activity": "Playing Sleeping",
   },
-  {
-    "name": "εოἶ",
-    "avatar": "assets/images/anya.png",
-    "status": "invisible",
-    "activity": "Playing Sleeping",
-  },
-  {
-    "name": "εოἶ",
-    "avatar": "assets/images/anya.png",
-    "status": "invisible",
-    "activity": "Playing Sleeping",
-  },
 ];

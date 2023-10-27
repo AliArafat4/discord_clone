@@ -30,16 +30,15 @@ class MainScreen extends StatelessWidget {
           if (MediaQuery.of(context).viewInsets.bottom != 0.0) {
             FocusManager.instance.primaryFocus!.unfocus();
           }
-          //TODO: FIX
-          isVisible.value = isOpened;
+
+          Future.delayed(const Duration(milliseconds: 100), () => isVisible.value = isOpened);
         },
         appBar: customAppBar(
             title: const Row(
               children: [
                 Icon(Icons.alternate_email, color: greyTextColor),
                 width8,
-                Text("Name",
-                    style: TextStyle(color: Colors.white, fontSize: 20)),
+                Text("Name", style: TextStyle(color: Colors.white, fontSize: 20)),
                 width8,
                 Stack(
                   children: [
@@ -61,8 +60,7 @@ class MainScreen extends StatelessWidget {
             ),
             actions: Row(
               children: [
-                const MainActionsAppBarIcons(
-                    iconData: Icons.wifi_calling_3_rounded),
+                const MainActionsAppBarIcons(iconData: Icons.wifi_calling_3_rounded),
                 const MainActionsAppBarIcons(iconData: Icons.videocam_rounded),
                 MainActionsAppBarIcons(
                     iconData: Icons.people,

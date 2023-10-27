@@ -10,7 +10,7 @@ class ForYouView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(top: 16.0),
         child: Column(
@@ -19,26 +19,22 @@ class ForYouView extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.only(left: 16),
-                child: Row(
-                  children: [
-                    //TODO: fix icon
-                    SvgPicture.asset(
-                      "assets/icons/broadcast_signal.svg",
-                      width: 25,
-                      height: 25,
-                      colorFilter:
-                          ColorFilter.mode(Colors.greenAccent, BlendMode.dst),
-                    ),
-                    Text(
-                      "Active Now",
-                      style: TextStyle(
-                        color: greyTextColor,
-                        fontSize: fontSize15,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
+                // child: Row(
+                //   children: [
+                //     Icon(
+                //       MyFlutterApp.broadcast_signal,
+                //       color: Colors.green,
+                //     ),
+                //     Text(
+                //       " Active Now",
+                //       style: TextStyle(
+                //         color: greyTextColor,
+                //         fontSize: fontSize15,
+                //         fontWeight: FontWeight.w500,
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ),
             ),
           ],

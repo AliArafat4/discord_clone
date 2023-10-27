@@ -18,19 +18,15 @@ class FriendsScreen extends StatelessWidget {
         title: const Text("Friends"),
         actions: Row(
           children: [
-            MainActionsAppBarIcons(
-                iconData: Icons.chat_bubble, onPressedFunc: () {}),
-            MainActionsAppBarIcons(
-                iconData: Icons.person_add_alt_rounded, onPressedFunc: () {}),
-            MainActionsAppBarIcons(
-                iconData: Icons.phone_iphone_outlined, onPressedFunc: () {}),
+            MainActionsAppBarIcons(iconData: Icons.chat_bubble, onPressedFunc: () {}),
+            MainActionsAppBarIcons(iconData: Icons.person_add_alt_rounded, onPressedFunc: () {}),
+            MainActionsAppBarIcons(iconData: Icons.phone_iphone_outlined, onPressedFunc: () {}),
           ],
         ),
       ),
       body: SingleChildScrollView(
         child: SizedBox(
           width: context.getWidthSize(),
-          height: context.getHeightSize() * 1.05,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -69,9 +65,7 @@ class FriendsScreen extends StatelessWidget {
                   style: const TextStyle(color: greyTextColor),
                 ),
               ),
-              const Expanded(
-                child: ListAllFriends(),
-              )
+              const ListAllFriends()
             ],
           ),
         ),
