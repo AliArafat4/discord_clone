@@ -4,7 +4,7 @@ export 'chat/components/chat_icons.dart';
 export 'widgets/main_action_app_bar_icons.dart';
 export 'chat/components/chat_text_field.dart';
 export 'widgets/custom_app_bar.dart';
-export 'chat/components/bottom_chat_bar.dart';
+export 'chat/components/main_chat_screen.dart';
 export 'widgets/user_avatar.dart';
 export 'package:discord_clone/utilities/utilities_exports.dart';
 export 'friends/friends_screen.dart';

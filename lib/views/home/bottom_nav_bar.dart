@@ -1,9 +1,10 @@
 import 'package:discord_clone/views/home/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:overlapping_panels/overlapping_panels.dart';
 
 import 'home_exports.dart';
 import 'explore/explore_screen.dart';
-import 'chat/chat_screen.dart';
+import 'chat/main_screen.dart';
 import 'notifications/notifications_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -15,7 +16,7 @@ class BottomNavBar extends StatefulWidget {
 }
 
 List<Widget> screensList = [
-  MainScreen(),
+  const MainScreen(),
   const FriendsScreen(),
   const SizedBox(),
   const NotificationsScreen(),

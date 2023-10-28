@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-
 import 'package:discord_clone/views/home/home_exports.dart';
 
-class ExploreTextField extends StatelessWidget {
-  const ExploreTextField({
+class CustomDrawerTextField extends StatelessWidget {
+  const CustomDrawerTextField({
     super.key,
-    required this.content,
   });
 
-  final String content;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10.0),
       child: SizedBox(
-        height: 40,
+        height: 35,
+        width: 250,
         child: TextField(
           keyboardType: TextInputType.text,
           textAlign: TextAlign.start,
@@ -30,9 +28,9 @@ class ExploreTextField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                   borderSide: const BorderSide(color: Colors.transparent)),
               filled: true,
-              hintText: content,
+              hintText: "Find or start a Conversation?",
               hintStyle: const TextStyle(
-                  color: greyTextColor, fontSize: fontSize18, fontWeight: FontWeight.w400),
+                  color: greyTextColor, fontSize: fontSize16, fontWeight: FontWeight.w400),
               fillColor: darkTextColor,
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5),

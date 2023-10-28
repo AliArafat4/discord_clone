@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
+import '../../data/countries_data_set.dart';
+import '../../data/global_data.dart';
+import '../../model/countries_model.dart';
 import 'components/auth_exports.dart';
 import 'components/selected_register_method.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   static String routeName = '/register';
   const RegisterScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  @override
+  void initState() {
+    for (var item in countriesData) {
+      listOfCountries.add(Countries.fromJson(item));
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +49,13 @@ class RegisterScreen extends StatelessWidget {
               firstSide: SelectedRegisterMethod(
                 content: 'Phone Number',
                 isPhone: true,
-                authTextField:
-                    AuthTextField(isPassword: false, content: "Phone"),
+                authTextField: AuthTextField(isPassword: false, content: "Phone"),
               ),
               secondSliderTitle: "Email",
               secondSide: SelectedRegisterMethod(
                 isPhone: false,
                 content: "Email",
-                authTextField:
-                    AuthTextField(isPassword: false, content: "Email"),
+                authTextField: AuthTextField(isPassword: false, content: "Email"),
               ),
             ),
             height10,
@@ -59,8 +73,7 @@ class RegisterScreen extends StatelessWidget {
               ),
             ),
             height20,
-            ButtonWidget(
-                content: "Next", color: buttonBlueColor, onPressedFunc: () {})
+            ButtonWidget(content: "Next", color: buttonBlueColor, onPressedFunc: () {})
           ],
         ),
       ),

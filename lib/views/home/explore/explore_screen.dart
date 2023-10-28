@@ -18,7 +18,7 @@ void exploreBottomSheet(BuildContext context) {
         return const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ExploreTextField(),
+            ExploreTextField(content: "Where would you like to go?"),
             height8,
             ExploreImagesRow(),
             Divider(
