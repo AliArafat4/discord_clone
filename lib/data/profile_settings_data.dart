@@ -1,3 +1,4 @@
+import 'package:discord_clone/data/data_exports.dart';
 import 'package:flutter/material.dart';
 
 import 'package:discord_clone/utilities/utilities_exports.dart';
@@ -5,9 +6,32 @@ import 'package:discord_clone/utilities/utilities_exports.dart';
 List<Map> profileSettings = [
   {
     "leading": const Icon(Icons.person, color: greyTextColor),
-    "title": const Text(
-      "Set Status",
-      style: TextStyle(color: Colors.white),
+    "title": Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          "Set Status",
+          style: TextStyle(color: Colors.white),
+        ),
+        Row(
+          children: [
+            CircleAvatar(
+              radius: 8,
+              backgroundColor: scaffoldBackgroundColor,
+              child: CircleAvatar(
+                backgroundColor:
+                    statusColor.map((e) => e[currentUser["status"]]).first,
+                radius: 5,
+              ),
+            ),
+            width8,
+            Text(
+              currentUser['status'],
+              style: const TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
+      ],
     ),
   },
   {

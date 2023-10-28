@@ -1,3 +1,4 @@
+import 'package:discord_clone/views/home/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import '../../data/countries_data_set.dart';
 import '../../data/global_data.dart';
@@ -49,13 +50,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
               firstSide: SelectedRegisterMethod(
                 content: 'Phone Number',
                 isPhone: true,
-                authTextField: AuthTextField(isPassword: false, content: "Phone"),
+                authTextField:
+                    AuthTextField(isPassword: false, content: "Phone"),
               ),
               secondSliderTitle: "Email",
               secondSide: SelectedRegisterMethod(
                 isPhone: false,
                 content: "Email",
-                authTextField: AuthTextField(isPassword: false, content: "Email"),
+                authTextField:
+                    AuthTextField(isPassword: false, content: "Email"),
               ),
             ),
             height10,
@@ -73,7 +76,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ),
             height20,
-            ButtonWidget(content: "Next", color: buttonBlueColor, onPressedFunc: () {})
+            ButtonWidget(
+                content: "Next",
+                color: buttonBlueColor,
+                onPressedFunc: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    BottomNavBar.routeName,
+                    (route) => false,
+                  );
+                })
           ],
         ),
       ),

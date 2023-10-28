@@ -1,7 +1,8 @@
 import 'package:discord_clone/data/data_exports.dart';
-import 'package:discord_clone/views/auth/components/pick_ountry_creen.dart';
+import 'package:discord_clone/views/auth/components/pick_country_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../../model/countries_model.dart';
 import 'auth_exports.dart';
 
 class PhoneTextField extends StatefulWidget {
@@ -10,12 +11,10 @@ class PhoneTextField extends StatefulWidget {
   final String content;
 
   @override
-  State<PhoneTextField> createState() => PhoneTextFieldState();
+  State<PhoneTextField> createState() => _PhoneTextFieldState();
 }
 
-class PhoneTextFieldState extends State<PhoneTextField> {
-  var selectedCountry = [listOfCountries.first];
-
+class _PhoneTextFieldState extends State<PhoneTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,36 +33,46 @@ class PhoneTextFieldState extends State<PhoneTextField> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => PickCountryScreen(selected: selectedCountry)));
+                          builder: (context) => const PickCountryScreen()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "${selectedCountry.first.code} ${selectedCountry.first.dial_code}",
-                        style: const TextStyle(color: Colors.white, fontSize: fontSize16),
-                      ),
-                      const VerticalDivider(
-                        indent: 6,
-                        endIndent: 6,
-                        thickness: 0.2,
-                        color: Colors.white,
-                      )
-                    ],
+                  child: SizedBox(
+                    width: 90,
+                    child: Row(
+                      children: [
+                        ValueListenableBuilder<Countries>(
+                            valueListenable: selectedCountry,
+                            builder: (context, value, child) {
+                              return Text(
+                                "${selectedCountry.value.code} ${selectedCountry.value.dial_code}",
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: fontSize16),
+                              );
+                            }),
+                        const VerticalDivider(
+                          indent: 6,
+                          endIndent: 6,
+                          thickness: 0.2,
+                          color: Colors.white,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
               counter: const SizedBox(),
-              focusedBorder:
-                  const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
+              focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent)),
               filled: true,
               hintText: widget.content,
               hintStyle: const TextStyle(
-                  color: greyTextColor, fontSize: fontSize18, fontWeight: FontWeight.w400),
+                  color: greyTextColor,
+                  fontSize: fontSize18,
+                  fontWeight: FontWeight.w400),
               fillColor: darkTextColor,
-              enabledBorder:
-                  const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent))),
+              enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent))),
         ),
       ),
     );

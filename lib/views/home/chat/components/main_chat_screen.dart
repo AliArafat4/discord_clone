@@ -14,48 +14,58 @@ class MainChatScreen extends StatelessWidget {
       drawerEdgeDragWidth: context.getWidthSize() * .5,
       endDrawer: const Drawer(backgroundColor: scaffoldBackgroundColor),
       appBar: customAppBar(
-          title: Row(
-            children: [
-              IconButton(
-                padding: EdgeInsets.zero,
-                alignment: Alignment.centerLeft,
-                onPressed: () {
-                  OverlappingPanels.of(context)?.reveal(RevealSide.left);
-                },
-                icon: const Icon(Icons.menu, color: greyTextColor),
-              ),
-              const Icon(Icons.alternate_email, color: greyTextColor),
-              width8,
-              const Text("Name", style: TextStyle(color: Colors.white, fontSize: 20)),
-              width8,
-              const Stack(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: offlineColor,
-                    radius: 7,
-                  ),
-                  Positioned(
-                    bottom: 3,
-                    right: 3,
-                    child: CircleAvatar(
-                      backgroundColor: scaffoldBackgroundColor,
-                      radius: 4,
+          title: ValueListenableBuilder<Friends>(
+              valueListenable: chattingWith,
+              builder: (context, value, child) {
+                return Row(
+                  children: [
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      alignment: Alignment.centerLeft,
+                      onPressed: () {
+                        OverlappingPanels.of(context)?.reveal(RevealSide.left);
+                      },
+                      icon: const Icon(Icons.menu, color: greyTextColor),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+                    const Icon(Icons.alternate_email, color: greyTextColor),
+                    width8,
+                    Text(chattingWith.value.name,
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 20)),
+                    width8,
+                    Stack(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: statusColor
+                              .map((e) => e[chattingWith.value.status])
+                              .first,
+                          radius: 7,
+                        ),
+                        Positioned(
+                          bottom: 3,
+                          right: 3,
+                          child: CircleAvatar(
+                            backgroundColor:
+                                (chattingWith.value.status == "invisible")
+                                    ? scaffoldBackgroundColor
+                                    : Colors.transparent,
+                            radius: 4,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              }),
           actions: Row(
             children: [
-              const MainActionsAppBarIcons(iconData: Icons.wifi_calling_3_rounded),
+              const MainActionsAppBarIcons(
+                  iconData: Icons.wifi_calling_3_rounded),
               const MainActionsAppBarIcons(iconData: Icons.videocam_rounded),
               MainActionsAppBarIcons(
                   iconData: Icons.people,
                   onPressedFunc: () {
                     OverlappingPanels.of(context)?.reveal(RevealSide.right);
-
-                    //_scaffoldKey.currentState!.openEndDrawer();
                   }),
             ],
           )),

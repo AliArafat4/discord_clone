@@ -12,8 +12,8 @@ class ServerAndAddColumn extends StatelessWidget {
     return Column(
       children: [
         Container(
-          decoration:
-              BoxDecoration(color: buttonBlueColor, borderRadius: BorderRadius.circular(12)),
+          decoration: BoxDecoration(
+              color: buttonBlueColor, borderRadius: BorderRadius.circular(12)),
           child: IconButton(
             color: Colors.white,
             onPressed: () {},
@@ -28,8 +28,8 @@ class ServerAndAddColumn extends StatelessWidget {
           ),
         ),
         Container(
-          decoration:
-              BoxDecoration(color: buttonDarkGreyColor, borderRadius: BorderRadius.circular(30)),
+          decoration: BoxDecoration(
+              color: lightDarkColor, borderRadius: BorderRadius.circular(30)),
           child: IconButton(
             color: Colors.green,
             onPressed: () {},
@@ -38,8 +38,8 @@ class ServerAndAddColumn extends StatelessWidget {
         ),
         height8,
         Container(
-          decoration:
-              BoxDecoration(color: buttonDarkGreyColor, borderRadius: BorderRadius.circular(30)),
+          decoration: BoxDecoration(
+              color: lightDarkColor, borderRadius: BorderRadius.circular(30)),
           child: IconButton(
             color: Colors.green,
             onPressed: () {},

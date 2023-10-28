@@ -1,20 +1,12 @@
-import 'package:discord_clone/model/countries_model.dart';
 import 'package:discord_clone/views/auth/components/auth_exports.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/global_data.dart';
 import '../../home/explore/components/explore_text_field.dart';
 
-class PickCountryScreen extends StatefulWidget {
-  const PickCountryScreen({Key? key, required this.selected}) : super(key: key);
+class PickCountryScreen extends StatelessWidget {
+  const PickCountryScreen({Key? key}) : super(key: key);
 
-  final List<Countries> selected;
-
-  @override
-  State<PickCountryScreen> createState() => _PickCountryScreenState();
-}
-
-class _PickCountryScreenState extends State<PickCountryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,14 +29,12 @@ class _PickCountryScreenState extends State<PickCountryScreen> {
           padding: const EdgeInsets.only(top: 4, left: 16),
           child: ListView.separated(
             itemCount: listOfCountries.length,
-            separatorBuilder: (context, index) => const Divider(color: Colors.white),
+            separatorBuilder: (context, index) =>
+                const Divider(color: Colors.white),
             itemBuilder: (context, index) {
               return InkWell(
                   onTap: () {
-                    widget.selected.clear();
-                    widget.selected.add(listOfCountries[index]);
-                    //TODO: FIX ERROR
-                    context.findAncestorStateOfType<PhoneTextFieldState>()!.setState(() {});
+                    selectedCountry.value = listOfCountries[index];
                     Navigator.pop(context);
                   },
                   child: SizedBox(
@@ -53,9 +43,11 @@ class _PickCountryScreenState extends State<PickCountryScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(listOfCountries[index].name,
-                            style: const TextStyle(color: Colors.white, fontSize: fontSize16)),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: fontSize16)),
                         Text(listOfCountries[index].dial_code,
-                            style: const TextStyle(color: Colors.white, fontSize: fontSize16)),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: fontSize16)),
                       ],
                     ),
                   ));

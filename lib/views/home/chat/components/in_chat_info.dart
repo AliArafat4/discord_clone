@@ -1,7 +1,7 @@
 import 'package:discord_clone/views/home/home_exports.dart';
 import 'package:flutter/material.dart';
 
-import 'package:discord_clone/views/home/home_exports.dart';
+import '../../widgets/user_avatar_with_status.dart';
 
 class InChatInfo extends StatelessWidget {
   const InChatInfo({Key? key}) : super(key: key);
@@ -21,23 +21,32 @@ class InChatInfo extends StatelessWidget {
                 Container(
                   width: context.getWidthSize() * .877,
                   decoration: const BoxDecoration(
-                      color: buttonDarkGreyColor,
+                      color: lightDarkColor,
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10))),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
                         width: context.getWidthSize() * .877,
-                        child: const ListTile(
+                        child: ListTile(
                           minLeadingWidth: 0,
                           horizontalTitleGap: 3,
-                          leading: Icon(Icons.alternate_email, color: greyTextColor),
-                          title: Text(
-                            "Name",
-                            style: TextStyle(color: Colors.white, fontSize: fontSize20),
-                          ),
-                          trailing: Icon(Icons.more_horiz_outlined, color: greyTextColor),
+                          leading: const Icon(Icons.alternate_email,
+                              color: greyTextColor),
+                          title: ValueListenableBuilder<Friends>(
+                              valueListenable: chattingWith,
+                              builder: (context, value, child) {
+                                return Text(
+                                  chattingWith.value.name,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: fontSize20),
+                                );
+                              }),
+                          trailing: const Icon(Icons.more_horiz_outlined,
+                              color: greyTextColor),
                         ),
                       ),
                       const Divider(
@@ -47,10 +56,13 @@ class InChatInfo extends StatelessWidget {
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          InChatInfoIcons(content: "Search", iconData: Icons.search),
-                          InChatInfoIcons(content: "Pins", iconData: Icons.push_pin),
                           InChatInfoIcons(
-                              content: "Notifications", iconData: Icons.notifications_rounded),
+                              content: "Search", iconData: Icons.search),
+                          InChatInfoIcons(
+                              content: "Pins", iconData: Icons.push_pin),
+                          InChatInfoIcons(
+                              content: "Notifications",
+                              iconData: Icons.notifications_rounded),
                         ],
                       ),
                       height8,
@@ -64,7 +76,8 @@ class InChatInfo extends StatelessWidget {
                       width: 35,
                       height: 35,
                       decoration: BoxDecoration(
-                          color: darkTextColor, borderRadius: BorderRadius.circular(35)),
+                          color: darkTextColor,
+                          borderRadius: BorderRadius.circular(35)),
                       child: IconButton(
                         onPressed: () {},
                         icon: const Icon(
@@ -75,14 +88,52 @@ class InChatInfo extends StatelessWidget {
                       ),
                     ),
                     title: const Text("New Group",
-                        style: TextStyle(color: Colors.white, fontSize: fontSize18)),
+                        style: TextStyle(
+                            color: Colors.white, fontSize: fontSize18)),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 16.0, top: 8),
-                  child: Text(
-                    "ONLINE -- 2",
-                    style: TextStyle(color: greyTextColor),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0, top: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "MEMBERS -- 2",
+                        style: TextStyle(color: greyTextColor),
+                      ),
+                      height5,
+                      ValueListenableBuilder<Friends>(
+                          valueListenable: chattingWith,
+                          builder: (context, value, child) {
+                            return Row(
+                              children: [
+                                UserAvatarWithStatus(
+                                    index: getIndex(chattingWith.value.avatar)),
+                                width8,
+                                Text(
+                                  chattingWith.value.name,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: fontSize16),
+                                ),
+                              ],
+                            );
+                          }),
+                      height5,
+                      Row(
+                        children: [
+                          UserAvatarWithStatus(
+                            index: getIndex(currentUser["name"]),
+                          ),
+                          width8,
+                          Text(
+                            currentUser["name"],
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: fontSize16),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -92,6 +143,19 @@ class InChatInfo extends StatelessWidget {
       ),
     );
   }
+}
+
+getIndex(String currentUser) {
+  int index = 0;
+  for (int i = 0; i < listOfFriends.length; i++) {
+    if (listOfFriends[i].name.contains(currentUser)) {
+      index = i;
+    }
+    if (listOfFriends[i].avatar.contains(currentUser)) {
+      index = i;
+    }
+  }
+  return index;
 }
 
 class InChatInfoIcons extends StatelessWidget {

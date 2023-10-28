@@ -11,7 +11,7 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: darkTextColor,
+      backgroundColor: scaffoldBackgroundColor,
       appBar: AppBar(
         toolbarHeight: 0,
         backgroundColor: scaffoldBackgroundColor,
@@ -26,33 +26,29 @@ class CustomDrawer extends StatelessWidget {
               width: 60,
               child: const ServerAndAddColumn(),
             ),
-            Container(
-              decoration: const BoxDecoration(
-                  color: scaffoldBackgroundColor,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: 280,
-                    child: ListTile(
-                      title: const Text(
-                        "Direct Messages",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w600, fontSize: fontSize16),
-                      ),
-                      trailing: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.mark_chat_unread,
-                            color: greyTextColor,
-                          )),
+            Column(
+              children: [
+                SizedBox(
+                  width: 280,
+                  child: ListTile(
+                    title: const Text(
+                      "Direct Messages",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: fontSize16),
                     ),
+                    trailing: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.mark_chat_unread,
+                          color: greyTextColor,
+                        )),
                   ),
-                  const CustomDrawerTextField(),
-                  const ListChatters(),
-                ],
-              ),
+                ),
+                const CustomDrawerTextField(),
+                const ListChatters(),
+              ],
             ),
             const VerticalDivider(thickness: 500, color: darkTextColor),
           ],

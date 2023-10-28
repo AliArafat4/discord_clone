@@ -1,6 +1,5 @@
 import 'package:discord_clone/views/home/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:overlapping_panels/overlapping_panels.dart';
 
 import 'home_exports.dart';
 import 'explore/explore_screen.dart';
